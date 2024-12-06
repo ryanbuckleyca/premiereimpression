@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrée</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: monospace;
+        }
+
+        body, html {
+            height: 100%;
+            background-color: #2c2f33;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+        }
+
+        .console-container {
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .cursor {
+            display: inline-block;
+            background-color: #ffffff;
+            width: 8px;
+            height: 1.2em;
+            margin-left: 5px;
+            animation: blink 0.8s steps(2, start) infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        @keyframes breakText {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: translateY(50px) rotate(30deg) scale(0.5); }
+        }
+
+        .break {
+            display: inline-block;
+            animation: breakText 1s forwards;
+        }
+
+        video {
+            display: none;
+            width: 100%;
+            height: auto;
+            max-width: 600px;
+        }
+
+        video.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="console-container">
+        <div id="message">Voulez-vous entrer ? Tapez Y/N ou Yes/No :</div>
+        <div id="inputLine">
+            <span id="inputText"></span><span class="cursor"></span>
+        </div>
+        <video id="videoPlayer" src="q.mp4"></video>
+    </div>
+
+    <script>
+        class ConsoleApp {
+            constructor(messageElement, inputElement, videoElement) {
+                this.messageElement = messageElement;
+                this.inputElement = inputElement;
+                this.videoElement = videoElement;
+                this.userInput = "";
+                this.stage = 0; // Étape actuelle du script
+
+                // Initialisation
+                this.init();
+            }
+
+            init = () => {
+                document.addEventListener('keydown', this.handleKeyDown);
+                this.videoElement.addEventListener('ended', this.onVideoEnd); // Écoute la fin de la vidéo
+            };
+
+            handleKeyDown = (event) => {
+                if (event.key.length === 1) {
+                    this.addCharacter(event.key);
+                } else if (event.key === "Backspace") {
+                    this.removeCharacter();
+                } else if (event.key === "Enter") {
+                    this.processInput();
+                }
+            };
+
+            addCharacter = (char) => {
+                this.userInput += char;
+                this.updateInputDisplay();
+            };
+
+            removeCharacter = () => {
+                this.userInput = this.userInput.slice(0, -1);
+                this.updateInputDisplay();
+            };
+
+            updateInputDisplay = () => {
+                this.inputElement.textContent = this.userInput;
+            };
+
+            processInput = () => {
+                const input = this.userInput.trim().toLowerCase();
+                if (this.stage === 0) {
+                    this.handleFirstQuestion(input);
+                } else if (this.stage === 1) {
+                    this.handleSecondQuestion(input);
+                }
+            };
+
+            handleFirstQuestion = (input) => {
+                if (input === 'y' || input === 'yes') {
+                    this.breakTextAndPlayVideo();
+                } else if (input === 'n' || input === 'no') {
+                    this.displayMessage("Écran noir...");
+                    setTimeout(() => this.resetToStart(), 2000);
+                } else {
+                    this.displayMessage("Entrée invalide. Tapez Y/N ou Yes/No :");
+                }
+            };
+
+            handleSecondQuestion = (input) => {
+                if (input === 'y' || input === 'yes') {
+                    this.displayMessage("Étape suivante...");
+                    this.stage++; // Passage à l'étape 2
+                } else if (input === 'n' || input === 'no') {
+                    this.displayMessage("Écran noir...");
+                    setTimeout(() => this.resetToStart(), 2000);
+                } else {
+                    this.displayMessage("Entrée invalide. Tapez Y/N ou Yes/No :");
+                }
+            };
+
+            breakTextAndPlayVideo = () => {
+                const textArray = this.messageElement.textContent.split('');
+                this.messageElement.innerHTML = ''; // Efface le message
+
+                // Ajoute chaque caractère avec un effet "cassé"
+                textArray.forEach((char) => {
+                    const span = document.createElement('span');
+                    span.textContent = char;
+                    span.classList.add('break');
+                    this.messageElement.appendChild(span);
+                });
+
+                // Joue la vidéo après l'animation
+                setTimeout(() => {
+                    this.playVideo();
+                }, 1000);
+            };
+
+            playVideo = () => {
+                this.videoElement.classList.add('active');
+                this.videoElement.play();
+            };
+
+            onVideoEnd = () => {
+                // Cache la vidéo et passe à la question suivante
+                this.videoElement.classList.remove('active');
+                this.displayMessage("Conscentez-vous à donner votre identité ? (Y/N)");
+                this.stage = 1; // Passe à la question suivante
+            };
+
+            resetToStart = () => {
+                this.videoElement.pause();
+                this.videoElement.classList.remove('active');
+                this.displayMessage("Voulez-vous entrer ? Tapez Y/N ou Yes/No :");
+                this.resetInput();
+                this.stage = 0;
+            };
+
+            displayMessage = (text) => {
+                this.messageElement.textContent = text;
+            };
+
+            resetInput = () => {
+                this.userInput = "";
+                this.updateInputDisplay();
+            };
+        }
+
+        // Initialisation
+        document.addEventListener("DOMContentLoaded", () => {
+            const messageElement = document.getElementById('message');
+            const inputElement = document.getElementById('inputText');
+            const videoElement = document.getElementById('videoPlayer');
+            new ConsoleApp(messageElement, inputElement, videoElement);
+        });
+    </script>
+
+</body>
+</html>
