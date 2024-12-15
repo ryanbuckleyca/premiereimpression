@@ -4,42 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Première Impression</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
             padding: 20px;
             background: url('assets/Fondo.webp') center center no-repeat;
             background-size: cover;
-            font-family: Arial, sans-serif;
+           font-family: 'Times New Roman', Times, serif;
             color: #333;
         }
 
         header {
             position: relative;
+            text-align: center;
+            margin-bottom: 20px;
         }
 
         .logo {
-            position: absolute;
-            top: 0;
-            right: 0;
-            margin: 10px;
-            width: 100px;
+            width: 150px;
             height: auto;
-        }
+            margin: 0 auto 10px;
+            background-color: white;
+            box-shadow: 1px 1px 5px 5px #333;
+            padding: 10px;
+            border-radius: 5px;
+    }
+        
+
+
 
         h1 {
-            text-align: center;
-            margin-top: 20px;
+            font-size: 2.5em;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-family: "Doto", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+            font-variation-settings:
+                "ROND" 0;
         }
 
         .content {
-            background-color: white;
-            padding: 20px;
-            margin: 20px auto;
-            max-width: 800px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
+    position: relative;
+    background-color: white;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Ensure the pseudo-elements are not cut off */
+    
+}
+
 
         p {
             margin: 10px 0;
@@ -47,27 +65,119 @@
         }
 
         a {
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-            text-decoration: none;
+            
             color: #007BFF;
-            font-weight: bold;
         }
 
         a:hover {
             text-decoration: underline;
         }
+
+        .projects {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .project-card {
+    border: 1px solid #ddd;
+    background-color: #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    position: relative;
+    text-decoration: none; /* Enlève la décoration de texte */
+    color: inherit; /* Hérite de la couleur de texte du parent */
+    display: block; /* Assure que le lien prend toute la place de la carte */
+}
+
+.project-card:hover {
+    transform: scale(1.05);
+}
+
+.project-card:hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.5);
+    z-index: 1;
+}
+
+.project-card img {
+    width: 100%;
+    height: auto;
+}
+
+.project-card h2 {
+    font-size: 1.5em;
+    margin: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+.project-card p {
+    margin: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+
+        /* Styles for the navigation menu */
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: #000;
+            padding: 10px 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
-    <header>
+    <nav>
+        <ul>
+            <li><a href="#home">Accueil</a></li>
+            <li><a href="#about">À propos</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#projects">Projets</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header id="home">
         <img src="assets/vector-premiere-impression.svg" alt="Logo Première Impression" class="logo">
+        <h1>Première Impression</h1>
     </header>
 
-    <h1>Première Impression</h1>
-
-    <div class="content">
+    <div class="content" id="about">
         <p>Première impression, c'est des gens qui prennent des photos des gens et qui les impriment.</p>
         <p>Vous aimez prendre des photos avec votre nouveau viel appareil photo argentique, mais vous n'arrivez pas à voir la photo que vous avez prise ?
         Vous possedez des tonnes de photos, mais vous ne pouvez pas les toucher.</p>
@@ -78,6 +188,36 @@
         <p>Première Impression is here to offer a solution, helping you master the chemistry to give you control over your images.</p>
     </div>
 
-    <a href="/VirtualMascarade">May I come in?</a>
+    <section class="projects" id="projects">
+        <div class="project-card">
+            <img src="assets/ossti.webp" alt="Projet Ossti">
+            <h2>Projet Ossti</h2>
+            <p>Description du projet Ossti.</p>
+        </div>
+        <a href="/VirtualMascarade" class="project-card">
+            <img src="assets/pandé.webp" alt="Projet Pandé">
+            <h2>Projet Pandé</h2>
+            <p>Description du projet Pandé.</p>
+        </a>
+        <div class="project-card">
+            <img src="assets/darkroom.webp" alt="Projet Darkroom">
+            <h2>Projet Darkroom</h2>
+            <p>Description du projet Darkroom.</p>
+        </div>
+    </section>
+    <section id="services">
+        <div class="content">
+            <h2>Services</h2>
+            <p>Et oui c'est nous les petits amis de la forêt, à la base on s'ennuyait et Colin avait un viel agrandisseur dont il ne savait que faire et on est arrivés pour stresser notre vie. Par contre pour le moment si vous voulez faire un workshop il faut nous appeler parce qu'on est en démarrage</p>
+        </div>
+    </section>
+    <section id="contact">
+        <div class="content">
+            <h2>Contact infos</h2>
+            <p>Si vous voulez nous contacter rdv sur <a target="_blank" href="mailto:bonjour@gmail.com">envoyez votre courriel si vous osez</a> mais aussi lorem lorem lroecneofbnsodinsofinsofinsf sdofisnfosinfosd fsf s fs df sf s f</p>
+        </div>
+    </section>
+
+
 </body>
 </html>
