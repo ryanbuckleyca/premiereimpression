@@ -81,7 +81,7 @@ body {
 .hero__logo {
   display: block;
   width: auto;
-  height: 2em;
+  height: 6em;
   margin-bottom: 1rem;
   filter: invert(1);
   opacity: 0;
