@@ -79,20 +79,13 @@ body {
 }
 
 .hero__logo {
-  position: absolute;
-  top: clamp(1.2rem, 4vh, 2rem);
-  left: clamp(1.5rem, 5vw, 4rem);
-  width: 15vw;
-  min-width: 6rem;
-  height: auto;
+  display: block;
+  width: auto;
+  height: 2em;
+  margin-bottom: 1rem;
   filter: invert(1);
   opacity: 0;
   animation: fadeUp 0.9s 0.1s ease forwards;
-  z-index: 3;
-}
-
-@media (max-width: 600px) {
-  .hero__logo { width: 33vw; }
 }
 
 .hero__name {
