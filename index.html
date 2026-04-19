@@ -14,14 +14,7 @@
 <body>
 
 <section class="hero">
-
-  <!-- Médias en fond -->
   <div class="hero__media">
-    <!--
-      Vidéo légère en boucle (MP4 H.264, muette, ~3-8 Mo max).
-      Fallback : front.webp si la vidéo ne charge pas.
-      Remplace les src par tes vrais fichiers.
-    -->
     <video
       class="hero__video"
       autoplay
@@ -41,13 +34,8 @@
     >
   </div>
 
-  <!-- Détail éditorial 
-  <span class="hero__frame">FRAME 001 / 36</span>
--->
-  <!-- Contenu -->
   <div class="hero__inner">
     <div class="hero__left">
-      <!-- Remplace le src par ton vrai logo SVG ou PNG -->
       <img
         class="hero__logo"
         src="assets/vector-premiere-impression.svg"
@@ -60,9 +48,9 @@
         Collective dedicated to analog photography and alternative processes where chemistry, light, and intention come together.
       </p>
       <p class="hero__tagline">
-        Collectif dédié à la photographie argentique et aux procédés alternatifs: la chimie, la lumière et l'oeuvre d'art se rencontrent.</p>
+        Collectif dédié à la photographie argentique et aux procédés alternatifs: la chimie, la lumière et l'oeuvre d'art se rencontrent.
+      </p>
     </div>
-
     <div class="hero__contact">
       <a href="tel:+14385069952">+1 438 506-9952</a>
       <a href="mailto:info@premiereimpression.org">info@premiereimpression.org</a>
@@ -70,15 +58,118 @@
   </div>
 
   <div class="hero__rule"></div>
-
-  <!-- Scroll indicator
-  <div class="hero__scroll">
-    <span>Découvrir</span>
-    <div class="hero__scroll-line"></div>
-  </div>
- -->
 </section>
 
+<!-- À propos -->
+<div class="below-fold">
+  <h2>À propos</h2>
+  <p>
+    Première Impression est un collectif de photographes et artistes de laboratoire qui ont fondé une chambre noire itinérante au printemps 2024. On prend notre darkroom dans les festivals du Québec et d'ailleurs — entièrement analogique, hors réseau, fait à la main.
+  </p>
+</div>
+
+<div class="about-image">
+  <img src="assets/about-photo.webp" alt="Première Impression — atelier">
+</div>
+
+<!-- 3 blocs : qui / lo-fi / direct positive -->
+<section class="about-blocks">
+
+  <div class="about-block">
+    <span class="about-block__num">01</span>
+    <h3>Who we are</h3>
+    <p>A collective of photographers and lab artists running a travelling darkroom through festivals in Québec and beyond — fully analog, human-powered, off-grid.</p>
+  </div>
+
+  <div class="about-block about-block--media">
+    <div class="about-block__text">
+      <span class="about-block__num">02</span>
+      <h3>Lo-Fi Sel-Fi</h3>
+      <p>A unique 15-minute on-field portrait experience. We shoot, develop, and print your photo on-site — a handmade, singular souvenir you can actually hold.</p>
+    </div>
+    <div class="about-block__img">
+      <!-- Remplace par ton SVG lofi-selfi -->
+      <img src="assets/lofi-selfi.svg" alt="Lo-Fi Sel-Fi diagram">
+    </div>
+  </div>
+
+  <div class="about-block about-block--media">
+    <div class="about-block__text">
+      <span class="about-block__num">03</span>
+      <h3>Direct positive</h3>
+      <p>No intermediary. No pixels. Just light fixed into molecules — molecular detail, subtle contrasts, and a piece of art that cannot be copied or reproduced.</p>
+    </div>
+    <div class="about-block__img">
+      <!-- Remplace par ton SVG direct-positive -->
+      <img src="assets/direct-positive.svg" alt="Direct positive diagram">
+    </div>
+  </div>
+
+</section>
+
+<!-- Événements -->
+<section class="events">
+  <h2 class="events__title">Événements</h2>
+  <ul class="events__list">
+
+    <li class="event">
+      <span class="event__date">Juin 2024</span>
+      <div class="event__info">
+        <span class="event__name">L'OSSTIDBURN 2024</span>
+        <span class="event__desc">Portrait et chambre noire tous terrains</span>
+      </div>
+    </li>
+
+    <li class="event">
+      <span class="event__date">Nov. 2024</span>
+      <div class="event__info">
+        <span class="event__name">Pandémonium 2024</span>
+        <span class="event__desc">Persona Factory — Usine à identité</span>
+      </div>
+    </li>
+
+    <li class="event">
+      <span class="event__date">Juin 2025</span>
+      <div class="event__info">
+        <span class="event__name">L'OSSTIDBURN 2025</span>
+        <span class="event__desc">Lo-Fi Sel-Fi</span>
+      </div>
+    </li>
+
+    <li class="event">
+      <span class="event__date">Août 2025</span>
+      <div class="event__info">
+        <span class="event__name">Les Faubourgs</span>
+        <span class="event__desc">Place à la communauté — Lo-Fi Sel-Fi</span>
+      </div>
+    </li>
+
+    <li class="event">
+      <span class="event__date">Août 2025</span>
+      <div class="event__info">
+        <span class="event__name">Lake City Arts Festival</span>
+        <span class="event__desc">Lo-Fi Sel-Fi et découverte photo, cyanotypes géant</span>
+      </div>
+    </li>
+
+    <li class="event">
+      <span class="event__date">12 mars 2026</span>
+      <div class="event__info">
+        <span class="event__name">Antisalon de l'emploi</span>
+        <span class="event__desc">Quartier Jeunesse CJEMTL — Lo-Fi Sel-Fi</span>
+      </div>
+    </li>
+
+    <li class="event">
+      <span class="event__date">21 mars 2026</span>
+      <div class="event__info">
+        <span class="event__name">Équinoxe — Bâtiment 7</span>
+        <span class="event__desc">Lo-Fi Sel-Fi</span>
+      </div>
+    </li>
+
+  </ul>
+</section>
 
 </body>
 </html>
