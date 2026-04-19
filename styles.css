@@ -69,6 +69,14 @@ body {
   pointer-events: none;
   animation: imgFallback 1.5s ease forwards;
 }
+.hero__vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  box-shadow: inset 0 0 120px rgba(0,0,0,0.75);
+  pointer-events: none;
+  animation: imgFallback 1.5s ease forwards;
+}
 
 /* Vidéo — en dessous, toujours en lecture */
 .hero__video {
