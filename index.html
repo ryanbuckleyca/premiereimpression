@@ -1,88 +1,82 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Première Impression</title>
-    <link rel="icon" href="assets/favicon64.png">
-    <link rel="stylesheet" href="/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Première Impression</title>
+  <link rel="icon" href="assets/favicon64.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Doto:wght@100..900&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav>
-        <input type="checkbox" id="menu-toggle" />
-        <label for="menu-toggle" class="menu-icon">&#9776;</label>
-        <ul class="menu">
-            <li><a href="#home">Accueil</a></li>
-            <li><a href="#about">À propos</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#projects">Projets</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
 
-    <header id="home">
-        <img src="assets/vector-premiere-impression.svg" alt="Logo Première Impression" class="logo">
-        <h1>Première Impression</h1>
-    </header>
+<section class="hero">
 
-    <div class="content" id="about">
-        <p>Première impression, c'est des gens qui prennent des photos des gens et qui les impriment.</p>
-        <p>Vous aimez prendre des photos avec votre nouveau viel appareil photo argentique, mais vous n'arrivez pas à voir la photo que vous avez prise ?
-        Vous possedez des tonnes de photos, mais vous ne pouvez pas les toucher.</p>
-        <p>Première Impression est là pour vous trouver une solution et vous aide à dompter la chimie pour vous donner le pouvoir de vos images.</p>
-        <p>Première Impression: People Who Capture Moments and Bring Them to Life</p>
-        <p>Do you enjoy taking photos with your new old film camera, but struggle to see the pictures you’ve taken?
-        Do you have tons of photos, but you can’t physically hold them?</p>
-        <p>Première Impression is here to offer a solution, helping you master the chemistry to give you control over your images.</p>
+  <!-- Médias en fond -->
+  <div class="hero__media">
+    <!--
+      Vidéo légère en boucle (MP4 H.264, muette, ~3-8 Mo max).
+      Fallback : front.webp si la vidéo ne charge pas.
+      Remplace les src par tes vrais fichiers.
+    -->
+    <video
+      class="hero__video"
+      autoplay
+      muted
+      loop
+      playsinline
+      poster="assets/front.webp"
+    >
+      <source src="assets/frontVideo.webm" type="video/webm">
+    </video>
+    <img
+      class="hero__img"
+      src="assets/front.webp"
+      srcset="assets/front.webp 1x, assets/front2.webp 2x"
+      alt="Première Impression — studio photo argentique Montréal"
+    >
+  </div>
+
+  <!-- Détail éditorial 
+  <span class="hero__frame">FRAME 001 / 36</span>
+-->
+  <!-- Contenu -->
+  <div class="hero__inner">
+    <div class="hero__left">
+      <!-- Remplace le src par ton vrai logo SVG ou PNG -->
+      <img
+        class="hero__logo"
+        src="assets/vector-premiere-impression.svg"
+        alt="Logo"
+        width="44"
+        height="44"
+      >
+      <h1 class="hero__name">Première Impression</h1>
+      <p class="hero__tagline">
+        Collective dedicated to analog photography and alternative processes where chemistry, light, and intention come together.
+      </p>
+      <p class="hero__tagline">
+        Collectif dédié à la photographie argentique et aux procédés alternatifs: la chimie, la lumière et l'oeuvre d'art se rencontrent.</p>
     </div>
 
-    <section class="projects" id="projects">
-        <div class="project-card">
-            <img src="assets/ossti.webp" alt="Projet Ossti">
-            <h2>Projet Ossti</h2>
-            <p>Description du projet Ossti.</p>
-        </div>
-        <a href="/VirtualMascarade" class="project-card">
-            <img src="assets/pandé.webp" alt="Projet Pandé">
-            <h2>Projet Pandé</h2>
-            <p>Description du projet Pandé.</p>
-        </a>
-        <div class="project-card">
-            <img src="assets/darkroom.webp" alt="Projet Darkroom">
-            <h2>Projet Darkroom</h2>
-            <p>Description du projet Darkroom.</p>
-        </div>
-    </section>
-    <section id="services">
-        <div class="content">
-            <h2>Services</h2>
-            <p>Et oui c'est nous les petits amis de la forêt, à la base on s'ennuyait et Colin avait un viel agrandisseur dont il ne savait que faire et on est arrivés pour stresser notre vie. Par contre pour le moment si vous voulez faire un workshop il faut nous appeler parce qu'on est en démarrage</p>
-        </div>
-    </section>
-    <section id="contact">
-        <div class="content">
-            <h2>Contact infos</h2>
-            <p>Si vous voulez nous contacter rdv sur <a target="_blank" href="mailto:bonjour@gmail.com">envoyez votre courriel si vous osez</a> mais aussi lorem lorem lroecneofbnsodinsofinsofinsf sdofisnfosinfosd fsf s fs df sf s f</p>
-        </div>
-    </section>
+    <div class="hero__contact">
+      <a href="tel:+14385069952">+1 438 506-9952</a>
+      <a href="mailto:info@premiereimpression.org">info@premiereimpression.org</a>
+    </div>
+  </div>
+
+  <div class="hero__rule"></div>
+
+  <!-- Scroll indicator -->
+  <div class="hero__scroll">
+    <span>Découvrir</span>
+    <div class="hero__scroll-line"></div>
+  </div>
+
+</section>
 
 
 </body>
-<footer>
-    <div class="footer-content">
-            <div class="footer-section">
-            <h3>Suivez-nous</h3>
-            <a href="https://www.facebook.com/profile.php?id=61570625756807" target="_blank">Facebook</a> |
-            <a href="https://bsky.app/profile/premiere-imp-mtl.bsky.social" target="_blank">BlueSky</a>
-        </div>
-        <div class="footer-section">
-            <h3>c'est à nous</h3>
-            <p>&copy; 2024 Première impression. Tous droits réservés.</p>
-        </div>
-    </div>
-</footer>
-
 </html>
