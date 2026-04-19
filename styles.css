@@ -5,6 +5,7 @@
   --paper: #f5f4f0;
   --muted: #888;
   --rule: rgba(0,0,0,0.12);
+  --rule-light: rgba(255,255,255,0.06);
 }
 
 body {
@@ -32,7 +33,6 @@ body {
   z-index: 0;
 }
 
-/* Dégradé sombre en bas */
 .hero__media::after {
   content: '';
   position: absolute;
@@ -45,7 +45,6 @@ body {
   z-index: 3;
 }
 
-/* Grain cinématique */
 .hero__media::before {
   content: '';
   position: absolute;
@@ -57,7 +56,6 @@ body {
   opacity: 0.55;
 }
 
-/* Image fallback — au-dessus de la vidéo, disparaît après 1.5s */
 .hero__img {
   position: absolute;
   inset: 0;
@@ -69,6 +67,7 @@ body {
   pointer-events: none;
   animation: imgFallback 1.5s ease forwards;
 }
+
 .hero__vignette {
   position: absolute;
   inset: 0;
@@ -78,7 +77,6 @@ body {
   animation: imgFallback 1.5s ease forwards;
 }
 
-/* Vidéo — en dessous, toujours en lecture */
 .hero__video {
   position: absolute;
   inset: 0;
@@ -174,17 +172,6 @@ body {
   z-index: 5;
 }
 
-.hero__frame {
-  position: absolute;
-  top: clamp(1.2rem, 4vh, 2rem);
-  right: clamp(1.5rem, 5vw, 4rem);
-  font-family: 'DM Mono', monospace;
-  font-size: 0.68rem;
-  color: rgba(255,255,255,0.35);
-  letter-spacing: 0.14em;
-  z-index: 5;
-}
-
 .hero__scroll {
   position: absolute;
   bottom: 1.8rem;
@@ -267,6 +254,132 @@ body {
   display: block;
 }
 
+/* ── ABOUT BLOCKS ───────────────────────────────────── */
+.about-blocks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1px;
+  background: var(--rule-light);
+  border-top: 1px solid var(--rule-light);
+}
+
+.about-block {
+  background: var(--ink);
+  padding: clamp(2rem, 5vw, 3.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Blocs avec SVG : texte à gauche, image à droite sur desktop */
+.about-block--media {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.about-block--media .about-block__text {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.about-block--media .about-block__img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-block--media .about-block__img img {
+  width: 100%;
+  max-width: 240px;
+  height: auto;
+  /* Si ton SVG est noir, invert pour fond sombre */
+  filter: invert(0) opacity(0.7);
+}
+
+.about-block__num {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+}
+
+.about-block h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  color: var(--paper);
+  line-height: 1.2;
+}
+
+.about-block p {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.9;
+}
+
+/* ── ÉVÉNEMENTS ─────────────────────────────────────── */
+.events {
+  background: var(--paper);
+  padding: 5rem clamp(1.5rem, 8vw, 8rem);
+}
+
+.events__title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  color: var(--ink);
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 1rem;
+  max-width: 800px;
+}
+
+.events__list {
+  list-style: none;
+  max-width: 800px;
+}
+
+.event {
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  gap: 1.5rem;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid var(--rule);
+  align-items: baseline;
+}
+
+.event__date {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.event__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.event__name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--ink);
+}
+
+.event__desc {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
 /* ── RESPONSIVE ─────────────────────────────────────── */
 @media (max-width: 600px) {
   .hero__inner {
@@ -278,5 +391,23 @@ body {
     flex-wrap: wrap;
     gap: 1rem;
     margin-top: 1.2rem;
+  }
+
+  /* SVG passe en dessous du texte sur mobile */
+  .about-block--media {
+    grid-template-columns: 1fr;
+  }
+
+  .about-block--media .about-block__img {
+    justify-content: flex-start;
+  }
+
+  .event {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+
+  .event__date {
+    font-size: 0.62rem;
   }
 }
