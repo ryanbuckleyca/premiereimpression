@@ -116,13 +116,13 @@ body {
 
 .hero__name {
   font-family: 'Doto', serif;
-  font-size: clamp(2.4rem, 6vw, 5rem);
-  font-weight: 100;
+  font-size: clamp(4rem, 6vw, 5rem);
+  font-weight: 400;
   color: #fff;
   letter-spacing: 0.04em;
   line-height: 1;
   margin-bottom: 0.75rem;
-  font-variation-settings: "ROND" 0;
+  font-variation-settings: "ROND" 100;
   opacity: 0;
   animation: fadeUp 0.8s 0.2s ease forwards;
 }
